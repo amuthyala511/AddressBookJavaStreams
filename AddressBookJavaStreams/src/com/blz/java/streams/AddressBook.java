@@ -112,13 +112,11 @@ public class AddressBook
 		{
 			System.out.println("Enter first name of user to delete: ");
 			String firstName = sc.next();
-			String str = "";
-			for(Person p : personList)
+			for(int i = 0; i < personList.size(); i++)
 			{
-				str = p.getFirstName();
-				if(firstName.equals(str))
+				if(personList.get(i).getFirstName().equalsIgnoreCase(firstName))
 				{
-					personList.remove(p); 
+					personList.remove(i); 
 				}
 				else
 				{
@@ -128,13 +126,24 @@ public class AddressBook
 			}
 		}
 	}
+	public void addPersons()
+	{
+		System.out.println("Enter number of persons to add to Address Book: ");
+		int noOfPersons = sc.nextInt();
+		int count = 1;
+		while(count <= noOfPersons)
+		{
+			addContact();
+			count++;
+		}
+	}
 	public static void main(String[] args)
 	{
 		AddressBook adrBook = new AddressBook();
 		System.out.println("Welcome to Address Book Problem");
 		int choice;
 		do {
-			System.out.println("1. Add new contact\n2. Edit contact details\n3. Delete contact\n");
+			System.out.println("1. Add new contact\n2. Edit contact details\n3. Delete contact\n4. Add multiple contacts\n");
 			choice = sc.nextInt();
 			switch(choice)
 			{
@@ -146,6 +155,9 @@ public class AddressBook
 					break;
 				case 3:
 					adrBook.deleteDetails();
+					break;
+				case 4:
+					adrBook.addPersons();
 					break;
 				default:
 					System.out.println("Invalid choice");
