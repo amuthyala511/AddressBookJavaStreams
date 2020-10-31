@@ -73,6 +73,13 @@ public class AddressBook
 		personList.stream().filter(n -> n.getCity().equals(city))
 				.forEach(i -> System.out.println("Result: "+i.getFirstName()));
 	}
+	public void viewByCity()
+	{
+		System.out.println("Enter city name: ");
+		String city = sc.next();
+		personList.stream().filter(n -> n.getCity().equals(city))
+				.forEach(i -> System.out.println(i));
+	}
 	public static void main(String[] args)
 	{
 		AddressBook adrBook = new AddressBook();
