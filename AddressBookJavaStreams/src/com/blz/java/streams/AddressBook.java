@@ -66,6 +66,13 @@ public class AddressBook
 			count++;
 		}
 	}
+	public void searchByCity()
+	{
+		System.out.println("Enter city name: ");
+		String city = sc.next();
+		personList.stream().filter(n -> n.getCity().equals(city))
+				.forEach(i -> System.out.println("Result: "+i.getFirstName()));
+	}
 	public static void main(String[] args)
 	{
 		AddressBook adrBook = new AddressBook();
