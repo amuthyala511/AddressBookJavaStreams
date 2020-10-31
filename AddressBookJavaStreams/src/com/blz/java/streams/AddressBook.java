@@ -101,13 +101,40 @@ public class AddressBook
 			}
 		}
 	}
+	public void deleteDetails()
+	{
+		if(personList.isEmpty())
+		{
+			System.out.println("The address book is empty. Enter some details");
+			addContact();
+		}
+		else
+		{
+			System.out.println("Enter first name of user to delete: ");
+			String firstName = sc.next();
+			String str = "";
+			for(Person p : personList)
+			{
+				str = p.getFirstName();
+				if(firstName.equals(str))
+				{
+					personList.remove(p); 
+				}
+				else
+				{
+					System.out.println("Enter valid first name");
+					deleteDetails();
+				}
+			}
+		}
+	}
 	public static void main(String[] args)
 	{
 		AddressBook adrBook = new AddressBook();
 		System.out.println("Welcome to Address Book Problem");
 		int choice;
 		do {
-			System.out.println("1. Add new contact\n2. Edit contact details\n");
+			System.out.println("1. Add new contact\n2. Edit contact details\n3. Delete contact\n");
 			choice = sc.nextInt();
 			switch(choice)
 			{
@@ -116,6 +143,9 @@ public class AddressBook
 					break;
 				case 2:
 					adrBook.editDetails();
+					break;
+				case 3:
+					adrBook.deleteDetails();
 					break;
 				default:
 					System.out.println("Invalid choice");
