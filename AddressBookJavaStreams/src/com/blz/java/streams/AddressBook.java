@@ -96,6 +96,12 @@ public class AddressBook
 					.collect(Collectors.toList());
 		personList.forEach(i -> System.out.println(i));
 	}
+	public void sortByCity()
+	{
+		personList = personList.stream().sorted(Comparator.comparing(Person :: getCity))
+					.collect(Collectors.toList());
+		personList.forEach(i -> System.out.println(i));
+	}
 	public static void main(String[] args)
 	{
 		AddressBook adrBook = new AddressBook();
