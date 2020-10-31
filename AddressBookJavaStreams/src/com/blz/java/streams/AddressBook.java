@@ -1,8 +1,10 @@
 package com.blz.java.streams;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook
 {
@@ -87,6 +89,12 @@ public class AddressBook
 		String city = sc.next();
 		count = (int) personList.stream().filter(n -> n.getCity().equals(city)).count();
 		System.out.println(count);
+	}
+	public void sortByName()
+	{
+		personList = personList.stream().sorted(Comparator.comparing(Person :: getFirstName))
+					.collect(Collectors.toList());
+		personList.forEach(i -> System.out.println(i));
 	}
 	public static void main(String[] args)
 	{
